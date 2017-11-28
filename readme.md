@@ -16,12 +16,12 @@ Clone this repo into `/customs/extensions/activity-graph`:
 
 ### Required schema:
 
-```
-table: main
+table_name: `main`
+
 | column_name | interface    |
 |-------------|--------------|
 | user        | user_created |
-```
+
 
 Please make sure your table `main` has a column named `user` which uses a `user_created` interface, or this extension won't work.
 
