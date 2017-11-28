@@ -1,7 +1,7 @@
 <?php
 
 $app = \Directus\Application\Application::getInstance();
-$mainTable = \Directus\Database\TableGatewayFactory::create('main');
+$mainTable = \Directus\Database\TableGatewayFactory::create('test');
 $userTable = \Directus\Database\TableGatewayFactory::create('directus_users');
 
 $app->get('/stats', function () use ($app, $mainTable, $userTable) {
@@ -10,23 +10,23 @@ $app->get('/stats', function () use ($app, $mainTable, $userTable) {
         'status' => [1, 2]
     ])['data'];
 
-	// Map array to be in format userID => count
-	$results = array_count_values(array_map(function ($item) {
-		return $item['user'];
-	}, $items));
+    // Map array to be in format userID => count
+    $results = array_count_values(array_map(function ($item) {
+        return $item['user'];
+    }, $items));
 
-	// Replace the userID with the name
-	//   of the user in the results array
-	foreach($results as $key => $value) {
-		$userName = getUserName($users, $key);
-		$results[$userName] = $value;
-		unset($results[$key]);
-	}
+    // Replace the userID with the name
+    //   of the user in the results array
+    foreach($results as $key => $value) {
+        $userName = getUserName($users, $key);
+        $results[$userName] = $value;
+        unset($results[$key]);
+    }
 
-	// Return the results to the client
-	return $app->response([
-		'results' => $results
-	]);
+    // Return the results to the client
+    return $app->response([
+        'results' => $results
+    ]);
 });
 
 function getUserName($users, $value) {
