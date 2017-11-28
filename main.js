@@ -1,10 +1,10 @@
 define(['app', 'core/extensions', 'backbone', './lib/chart'], function (app, Extension, Backbone, ChartJS) {
   var Model = Backbone.Model.extend({
-    url: '/api/extensions/activity_graph/stats'
+    url: '/api/extensions/activity-graph/stats'
   });
 
   var View = Extension.View.extend({
-    template: 'activity_graph/template',
+    template: 'activity-graph/template',
     initialize: function () {
       this.listenTo(this.model, 'sync', this.render);
       this.model.fetch();
@@ -55,7 +55,7 @@ define(['app', 'core/extensions', 'backbone', './lib/chart'], function (app, Ext
   });
 
   return {
-    id: 'activity_graph',
+    id: 'activity-graph',
     title: 'Activity Graph',
     Router: Router
   }
