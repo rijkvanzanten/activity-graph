@@ -1,7 +1,7 @@
 <?php
 
 $app = \Directus\Application\Application::getInstance();
-$mainTable = \Directus\Database\TableGatewayFactory::create('test');
+$mainTable = \Directus\Database\TableGatewayFactory::create('main');
 $userTable = \Directus\Database\TableGatewayFactory::create('directus_users');
 
 $app->get('/stats', function () use ($app, $mainTable, $userTable) {
