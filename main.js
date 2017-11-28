@@ -15,7 +15,7 @@ define(['app', 'core/extensions', 'backbone', './lib/chart'], function (app, Ext
       };
     },
     afterRender: function () {
-      var canvasElement = this.$el[0].querySelector('canvas');
+      var canvasElement = this.el.querySelector('canvas');
       var data = this.model.get('results');
       if (data) {
         this.chart = new ChartJS(canvasElement, {
